@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">New Project For Hamza</string>
+    <string name="splash_screen">Splash Screen</string>
+    <string name="popular_list_failed">Popular list failed</string>
+    <string name="top_rated_list_failed">Top‑rated list failed</string>
+    <string name="both_requests_failed">Both requests failed</string>
+    <string name="popular">popular</string>
+    <string name="top_rated">top_rated</string>
+    <string name="unknown_error">Unknown error</string>
+    <string name="unknown_errors">Unknown error</string>
+</resources>
