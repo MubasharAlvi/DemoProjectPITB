@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@+id/light_shadow_id" />
+        <Constraint android:id="@+id/ellipse_id" />
+        <Constraint android:id="@+id/bottom_line_id" />
+        <Constraint
+            android:layout_width="674.35dp"
+            android:layout_height="732.27dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="99dp"
+            android:id="@+id/mien_building_id"
+            app:layout_constraintVertical_bias="0.0"
+            android:layout_marginBottom="0dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0" />
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/light_shadow_id" />
+        <Constraint android:id="@+id/ellipse_id"/>
+        <Constraint android:id="@+id/bottom_line_id" />
+        <Constraint android:id="@+id/app_logo_id" />
+
+        <Constraint
+            android:layout_width="674.35dp"
+            android:layout_height="732.27dp"
+            android:id="@+id/mien_building_id"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintHorizontal_bias="0.57"
+            app:layout_constraintVertical_bias="0.01999998" />
+    </ConstraintSet>
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@+id/start"
+        app:autoTransition="animateToEnd"
+        app:duration="7000">
+
+        <KeyFrameSet >
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="0"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="6"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="10"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="15"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="20"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="50"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="30"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="40"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="50"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="60"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="70"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="80"
+                android:alpha="0.5" />
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="90"
+                android:alpha="0.5" />
+
+            <KeyAttribute
+                app:motionTarget="@+id/mien_building_id"
+                app:framePosition="100"
+                android:alpha="0.5" />
+
+
+        </KeyFrameSet>
+    </Transition>
+
+</MotionScene>

@@ -4,21 +4,141 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.ui.splash.SplashActivity">
 
-<androidx.constraintlayout.widget.ConstraintLayout
-    android:id="@+id/main"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
 
-<TextView
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/splash_screen"
-    android:textAlignment="center"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintStart_toStartOf="parent"
-    />
+    <androidx.constraintlayout.motion.widget.MotionLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#0F0839"
+        app:layoutDescription="@xml/activity_main_scene">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <View
+            android:id="@+id/light_shadow_id"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/maskgrouppng" />
+
+        <View
+            android:id="@+id/mien_building_id"
+            android:layout_width="674.35dp"
+            android:layout_height="732.27dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="79.33dp"
+            android:background="@drawable/arfa_img" />
+        <View
+            android:id="@+id/cloud_id"
+            android:layout_width="671dp"
+            android:layout_height="311.13dp"
+            android:background="@drawable/cloudstwo"
+            />
+        <View
+            android:id="@+id/clouds"
+            android:layout_width="381.22dp"
+            android:layout_height="176.84dp"
+            android:background="@drawable/clouds"
+            android:alpha="0.4"
+            />
+        <View
+            android:id="@+id/clouds_id"
+            android:layout_width="871dp"
+            android:layout_height="403.87dp"
+            android:layout_alignParentLeft="true"
+            android:layout_marginLeft="-250dp"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="-15.55dp"
+            android:background="@drawable/cloudsone"
+            />
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/ellipse_id"
+            android:layout_width="182dp"
+            android:layout_height="182dp"
+            android:background="@drawable/ellipse"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ProgressBar
+                android:id="@+id/progressBarId"
+                style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:progressDrawable="@drawable/drawable_circle_progress_bar" />
+
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/logo_layout_id"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                app:layout_constraintBottom_toBottomOf="@+id/ellipse_id"
+                app:layout_constraintEnd_toEndOf="@+id/ellipse_id"
+                app:layout_constraintStart_toStartOf="@+id/ellipse_id"
+                app:layout_constraintTop_toTopOf="@+id/ellipse_id">
+
+                <ImageView
+                    android:id="@+id/app_logo_id"
+                    android:layout_width="85dp"
+                    android:layout_height="73dp"
+                    android:src="@drawable/ic_logo"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.68"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintVertical_bias="0.31" />
+
+
+                <TextView
+                    android:id="@+id/logo_name_id"
+                    android:layout_width="104dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-12dp"
+                    android:layout_marginEnd="45dp"
+                    android:text="ithra"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/white"
+                    android:textSize="35dp"
+                    app:layout_constraintEnd_toEndOf="@+id/app_logo_id"
+                    app:layout_constraintTop_toBottomOf="@+id/app_logo_id" />
+
+                <TextView
+                    android:id="@+id/logo_name_sub_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="-12dp"
+                    android:text="aramco"
+                    android:textAlignment="center"
+                    android:textColor="@color/white"
+                    android:textSize="12dp"
+                    app:layout_constraintEnd_toEndOf="@+id/logo_name_id"
+                    app:layout_constraintTop_toBottomOf="@+id/logo_name_id" />
+
+                <TextView
+                    android:id="@+id/by_sub_id"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:gravity="bottom"
+                    android:text="by "
+                    android:textColor="@color/white"
+                    android:textSize="8dp"
+                    app:layout_constraintBottom_toBottomOf="@+id/logo_name_sub_id"
+                    app:layout_constraintEnd_toStartOf="@+id/logo_name_sub_id"
+                    app:layout_constraintTop_toTopOf="@+id/logo_name_sub_id" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <View
+            android:id="@+id/bottom_line_id"
+            android:layout_width="134dp"
+            android:layout_height="5dp"
+            android:layout_marginBottom="12dp"
+            android:background="#989898"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.motion.widget.MotionLayout>
+
 </layout>
