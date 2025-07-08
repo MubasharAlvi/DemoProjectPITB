@@ -35,8 +35,6 @@ object DatabaseModule {
     @Singleton
     fun provideSupportFactory(userDatabasePassphrase: UserDatabasePassphrase) = SupportFactory(userDatabasePassphrase.getPassphrase())
 
-    val passphrase = SQLiteDatabase.getBytes("moviesDB".toCharArray())
-    val factory = SupportFactory(passphrase)
     @Provides
     @Singleton
     fun provideDatabase(@ApplicationContext ctx: Context, supportFactory: SupportFactory): AppDatabase =
