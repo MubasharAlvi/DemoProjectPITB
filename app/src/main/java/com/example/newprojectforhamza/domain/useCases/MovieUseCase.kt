@@ -21,7 +21,7 @@ class MovieUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
 
-    /** 🆕 Emits one ResourceApiState<List<Movie>> that merges both sources. */
+    /** 🆕 Emits one ResourceApiState<List<Movie>> that merges(TOP and Rated Movies). */
     suspend fun getAllMovies(): Flow<ResourceApiState<List<Movie>>> =
         combine(
             repository.getPopularMovies(),    /** Flow<ResourceApiState<List<PopularMoviesModel>>>*/
@@ -75,4 +75,12 @@ class MovieUseCase @Inject constructor(
             }
         }
             .flowOn(Dispatchers.IO)
+
+    /** ----------  only POPULAR List---------- */
+    suspend fun getPopularMovies(): Flow<ResourceApiState<List<PopularMoviesModel>>> =
+        repository.getPopularMovies().flowOn(Dispatchers.IO)
+
+    /** ----------  only TOP‑RATED  LIST---------- */
+    suspend fun getTopRatedMovies(): Flow<ResourceApiState<List<TopRatedMoviesModel>>> =
+        repository.getTopRatedMovies().flowOn(Dispatchers.IO)
 }

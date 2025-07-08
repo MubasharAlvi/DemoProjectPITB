@@ -13,7 +13,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newprojectforhamza.R
-import com.example.newprojectforhamza.databinding.FragmentHomeBinding
+import com.example.newprojectforhamza.databinding.FragmentAllMovieBinding
 import com.example.newprojectforhamza.domain.domainModels.Movie
 import com.example.newprojectforhamza.presentation.ui.adapter.RecycleViewAdapter
 import com.example.newprojectforhamza.presentation.ui.viewModels.MoviesViewModel
@@ -22,8 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
-class HomeFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
-    private var _binding: FragmentHomeBinding? = null
+class AllMovieFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
+    private var _binding: FragmentAllMovieBinding? = null
     private val binding get() = _binding!!
     private val viewModel: MoviesViewModel by viewModels()
     private lateinit var moviesAdapter: RecycleViewAdapter
@@ -31,7 +31,7 @@ class HomeFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?
     ): View {
-        _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        _binding = FragmentAllMovieBinding.inflate(inflater, container, false)
         return binding.root
     }
 

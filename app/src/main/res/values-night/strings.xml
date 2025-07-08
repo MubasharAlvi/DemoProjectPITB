@@ -9,4 +9,7 @@
     <string name="unknown_errors">Unknown error</string>
     <string name="unknown_errorss">Unknown error</string>
     <string name="progress">progress</string>
+    <string name="all_movie">All Movie</string>
+    <string name="populars">Popular Movie</string>
+    <string name="top_movies">Top Movies</string>
 </resources>

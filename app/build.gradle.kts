@@ -8,6 +8,7 @@ plugins {
     kotlin("plugin.serialization") version "2.2.0"
 //    id("com.google.devtools.ksp") version "1.9.22-1.0.20"
     id("com.google.devtools.ksp") version "1.9.22-1.0.18" apply false
+    alias(libs.plugins.kotlin.compose)
 
 }
 
@@ -17,7 +18,10 @@ android {
     compileSdk = 36
 
     buildFeatures {
+        compose =true
         buildConfig = true
+        viewBinding =true
+        dataBinding =true
     }
 
     defaultConfig {
@@ -38,7 +42,9 @@ android {
             abiFilters += listOf("armeabi-v7a", "arm64-v8a")
         }
     }
-   productFlavors{
+    composeOptions { kotlinCompilerExtensionVersion = "2.0.0" }
+
+    productFlavors{
 
    }
 
@@ -61,10 +67,7 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    /**Data Binding */
-    dataBinding {
-        enable = true
-    }
+
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
@@ -202,6 +205,16 @@ dependencies {
     implementation(libs.androidx.recyclerview.selection)
     testImplementation(kotlin("test"))
 
+    /** ----   Compose Dependency ------*/
+    implementation(libs.androidx.ui)
+    implementation(libs.androidx.ui.graphics)
+    implementation(libs.androidx.ui.tooling.preview)
+    implementation(libs.androidx.material3)
+    androidTestImplementation(platform(libs.androidx.compose.bom))
+    implementation(libs.androidx.activity.compose)
+    implementation(platform(libs.androidx.compose.bom))
+    implementation(libs.coil3.coil.compose)
+    implementation(libs.coil.network.okhttp)
 }
 
 kapt {

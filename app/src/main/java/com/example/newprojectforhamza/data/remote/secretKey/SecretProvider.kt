@@ -11,8 +11,12 @@ class SecretProvider @Inject constructor() {
     }
 
     private external fun getSecretNative(key: String): String
-
+    /**----------------API KEY -----------------*/
     val apiKey: String get() = getSecretNative("API_KEY")
+    /**--------------- Base URL------------------*/
     val baseUrl: String get() = getSecretNative("BASE_URL")
+    /**----------- Load Images---------------*/
+    val urlImg: String get() = getSecretNative("URL_IMAGE")
+
     val analyticsKey: String get() = getSecretNative("ANALYTICS_KEY")
 }

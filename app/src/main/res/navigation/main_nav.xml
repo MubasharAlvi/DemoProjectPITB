@@ -3,13 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main_nav"
-    app:startDestination="@id/homeFragment">
+    app:startDestination="@id/allMovieFragment">
 
     <fragment
-        android:id="@+id/homeFragment"
-        android:name="com.example.newprojectforhamza.presentation.ui.dashboard.HomeFragment"
+        android:id="@+id/allMovieFragment"
+        android:name="com.example.newprojectforhamza.presentation.ui.dashboard.AllMovieFragment"
         android:label="HomeFragment"
-        tools:layout="@layout/fragment_home"
+        tools:layout="@layout/fragment_all_movie"
         />
+    <fragment
+        android:id="@+id/popularMovieFragment"
+        android:name="com.example.newprojectforhamza.presentation.ui.dashboard.PopularMovieFragment"
+        android:label="fragment_popular_movie"
+        tools:layout="@layout/fragment_popular_movie" />
+    <fragment
+        android:id="@+id/topRatedMovieFragment"
+        android:name="com.example.newprojectforhamza.presentation.ui.dashboard.TopRatedMovieFragment"
+        android:label="fragment_top_rated_movie"
+        tools:layout="@layout/fragment_top_rated_movie" />
 
 </navigation>
