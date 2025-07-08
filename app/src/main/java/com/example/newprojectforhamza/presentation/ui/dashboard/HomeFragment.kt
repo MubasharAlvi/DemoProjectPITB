@@ -1,6 +1,7 @@
 package com.example.newprojectforhamza.presentation.ui.dashboard
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -62,6 +63,7 @@ class HomeFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
                         is ResourceApiState.Success -> {
                             binding.progressbarId.visibility = View.GONE
                             val data = state.data ?: return@collect
+                            Log.e("TAG","Data=== $data")
                             recycleViewFun(data as ArrayList<Movie>)
                         }
                         is ResourceApiState.Error -> {

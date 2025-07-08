@@ -4,9 +4,11 @@ import androidx.paging.PagingSource
 import androidx.room.Dao
 import androidx.room.Query
 import com.example.newprojectforhamza.data.local.entity.TopRatedMoviesEntity
+import com.example.newprojectforhamza.data.remote.models.TopRatedMoviesDTO
+import com.example.newprojectforhamza.data.remote.models.TopRatedResultDTO
 import kotlinx.coroutines.flow.Flow
 
-@Dao
+/*@Dao
 interface TopRatedMovieDao : BaseDao<TopRatedMoviesEntity> {
 
     @Query("DELETE FROM topRatedMovies")
@@ -20,4 +22,19 @@ interface TopRatedMovieDao : BaseDao<TopRatedMoviesEntity> {
 
     @Query("SELECT * FROM topRatedMovies ORDER BY voteAverage DESC")
     fun pagingSource(): PagingSource<Int, TopRatedMoviesEntity>
+}*/
+@Dao
+interface TopRatedMovieDao : BaseDao<TopRatedResultDTO> {
+
+    @Query("DELETE FROM topRatedMovies")
+    suspend fun clear()
+
+    @Query("SELECT * FROM topRatedMovies ORDER BY voteAverage DESC")
+    fun observeTopRated(): Flow<List<TopRatedResultDTO>>
+
+    @Query("SELECT * FROM topRatedMovies ORDER BY popularity DESC")
+    fun observePopular(): Flow<List<TopRatedResultDTO>>
+
+    @Query("SELECT * FROM topRatedMovies ORDER BY voteAverage DESC")
+    fun pagingSource(): PagingSource<Int, TopRatedResultDTO>
 }

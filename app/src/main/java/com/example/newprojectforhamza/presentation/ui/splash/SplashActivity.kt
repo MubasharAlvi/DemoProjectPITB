@@ -68,7 +68,7 @@ class SplashActivity : AppCompatActivity() {
     ) {
         android.animation.ObjectAnimator.ofInt(
             this,
-            "progress",
+            context.getString(R.string.progress),
             target
         ).apply {
             setDuration(duration)

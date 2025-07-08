@@ -5,12 +5,12 @@ import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
 import com.example.newprojectforhamza.data.local.dao.PopularMovieDao
 import com.example.newprojectforhamza.data.local.dao.TopRatedMovieDao
-import com.example.newprojectforhamza.data.local.entity.PopularMoviesEntity
-import com.example.newprojectforhamza.data.local.entity.TopRatedMoviesEntity
+import com.example.newprojectforhamza.data.remote.models.PopularResultDTO
+import com.example.newprojectforhamza.data.remote.models.TopRatedResultDTO
 import com.example.newprojectforhamza.data.utils.Converters
 
 @Database(
-    entities = [PopularMoviesEntity::class, TopRatedMoviesEntity::class],
+    entities = [PopularResultDTO::class, TopRatedResultDTO::class],
     version = 2,
     exportSchema = true
 )

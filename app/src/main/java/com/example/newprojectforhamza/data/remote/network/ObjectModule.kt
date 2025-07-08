@@ -30,8 +30,6 @@ object ObjectModule {
         .Builder()
         .build()
 
-
-
     @Singleton
     @Provides
     fun provideConverterFactory(): GsonConverterFactory =
@@ -44,19 +42,13 @@ object ObjectModule {
         gsonConverterFactory: GsonConverterFactory,
         secretProvider: SecretProvider
     ): ApiService {
-        val raw = secretProvider.baseUrl          // native string
-        require(raw.isNotBlank()) { "BASE_URL is blank" }
-
-        val baseUrl = if (raw.endsWith("/")) raw else "$raw/"
         return Retrofit.Builder()
-          //  .baseUrl("https://api.themoviedb.org/3/")
-            .baseUrl(baseUrl)
+            .baseUrl(secretProvider.baseUrl)
             .client(okHttpClient)
             .addConverterFactory(gsonConverterFactory)
             .build()
             .create(ApiService::class.java)
     }
-
 
     @Singleton
     @Provides

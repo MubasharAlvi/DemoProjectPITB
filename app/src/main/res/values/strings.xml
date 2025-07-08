@@ -8,4 +8,5 @@
     <string name="top_rated">top_rated</string>
     <string name="unknown_error">Unknown error</string>
     <string name="unknown_errors">Unknown error</string>
+    <string name="progress">progress</string>
 </resources>

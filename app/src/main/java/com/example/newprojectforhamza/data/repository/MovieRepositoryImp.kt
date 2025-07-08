@@ -2,10 +2,9 @@ package com.example.newprojectforhamza.data.repository
 
 import android.content.Context
 import com.example.newprojectforhamza.R
-import com.example.newprojectforhamza.data.local.crypto.Encrypter
 import com.example.newprojectforhamza.data.local.dao.PopularMovieDao
 import com.example.newprojectforhamza.data.local.dao.TopRatedMovieDao
-import com.example.newprojectforhamza.data.mapper.toEntity
+import com.example.newprojectforhamza.data.local.utils.replaceAll
 import com.example.newprojectforhamza.data.mapper.toPopularDomain
 import com.example.newprojectforhamza.data.mapper.toTopRatedDomain
 import com.example.newprojectforhamza.data.remote.apiService.ApiService
@@ -26,11 +25,10 @@ class MovieRepositoryImp @Inject constructor(
     private val api: ApiService,
     private val daoPopular: PopularMovieDao,
     private val daoTop: TopRatedMovieDao,
-    private val secretProvider: SecretProvider,
-    private val encrypter: Encrypter
+    private val secretProvider: SecretProvider
 ) : MovieRepository {
 
-    override suspend fun getPopularMovies(): Flow<ResourceApiState<List<PopularMoviesModel>>> =
+    /** override suspend fun getPopularMovies(): Flow<ResourceApiState<List<PopularMoviesModel>>> =
         networkBoundResource(
             isOnline = { context.isOnline() },
             queryLocal = { daoPopular.observePopular().map { list -> list.map { it.toPopularDomain() } } },
@@ -38,7 +36,6 @@ class MovieRepositoryImp @Inject constructor(
             saveRemote = {
                 daoPopular.clear()
                 daoPopular.insertAll(it.map { dto -> dto.toEntity() })
-
             }
         )
 
@@ -51,11 +48,34 @@ class MovieRepositoryImp @Inject constructor(
                 daoTop.clear()
                 daoTop.insertAll(it.map { dto -> dto.toEntity() })
             }
+        )*/
+
+
+    override suspend fun getPopularMovies(): Flow<ResourceApiState<List<PopularMoviesModel>>> =
+        networkBoundResource(
+            isOnline    = { context.isOnline() },
+            queryLocal  = { daoPopular.observePopular().map { it.map { e -> e.toPopularDomain() } } },
+            fetchRemote = {
+                api.popularMovies(
+                    context.getString(R.string.popular),
+                    apiKey = secretProvider.apiKey
+                ).results
+            },
+            saveRemote  = { remote -> daoPopular.replaceAll(remote) }
         )
 
-    /**  companion object {
-    private const val API_KEY =  "15bfad0090cb7eec31022ab8ccf17dd3"
-    }*/
+    override suspend fun getTopRatedMovies(): Flow<ResourceApiState<List<TopRatedMoviesModel>>> =
+        networkBoundResource(
+            isOnline    = { context.isOnline() },
+            queryLocal  = { daoTop.observeTopRated().map { it.map { e -> e.toTopRatedDomain() } } },
+            fetchRemote = {
+                api.topRatedMovies(
+                    context.getString(R.string.top_rated),
+                    apiKey = secretProvider.apiKey
+                ).results
+            },
+            saveRemote  = { remote -> daoTop.replaceAll(remote) }
+        )
 
     inline fun <RemoteT, DomainT> networkBoundResource(
         crossinline isOnline: suspend () -> Boolean,

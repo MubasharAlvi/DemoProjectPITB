@@ -1,11 +1,11 @@
 package com.example.newprojectforhamza.data.mapper
 
-import com.example.newprojectforhamza.data.local.entity.PopularMoviesEntity
-import com.example.newprojectforhamza.data.local.entity.TopRatedMoviesEntity
 import com.example.newprojectforhamza.data.remote.models.PopularResultDTO
 import com.example.newprojectforhamza.data.remote.models.TopRatedResultDTO
 import com.example.newprojectforhamza.domain.domainModels.PopularMoviesModel
 import com.example.newprojectforhamza.domain.domainModels.TopRatedMoviesModel
+
+/**
 fun PopularResultDTO.toEntity(): PopularMoviesEntity = PopularMoviesEntity(
     adult            = adult,
     backdropPath     = backdropPath,
@@ -39,8 +39,10 @@ fun TopRatedResultDTO.toEntity() = TopRatedMoviesEntity(
     voteAverage      = voteAverage ?: 0.0,
     voteCount        = voteCount ?: 0
 )
+*/
 
-fun PopularMoviesEntity.toPopularDomain(): PopularMoviesModel =
+/**
+ * fun PopularMoviesEntity.toPopularDomain(): PopularMoviesModel =
     PopularMoviesModel(
         id=id,
         title=title,
@@ -66,5 +68,31 @@ fun TopRatedMoviesEntity.toTopRatedDomain(): TopRatedMoviesModel =
         popularity=popularity,
         releaseDate=releaseDate,
         video=video
+    )*/
+fun PopularResultDTO.toPopularDomain(): PopularMoviesModel =
+    PopularMoviesModel(
+        id=id,
+        title=title,
+        posterPath=poster_path,
+        genreIds=genreIds,
+        backdropPath=backdrop_path,
+        originalTitle=original_title,
+        overview=overview,
+        popularity=popularity,
+        releaseDate=release_date,
+        video = false
     )
 
+fun TopRatedResultDTO.toTopRatedDomain(): TopRatedMoviesModel =
+    TopRatedMoviesModel(
+        id=id,
+        title=original_name,
+        posterPath=poster_path,
+        genreIds=genreIds,
+        backdropPath=backdrop_path,
+        originalTitle=original_name,
+        overview=overview,
+        popularity=popularity,
+        releaseDate=first_air_date,
+        video=video
+    )
