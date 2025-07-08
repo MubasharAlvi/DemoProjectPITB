@@ -126,18 +126,24 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     /** ---------- Unit testing ---------- */
-    testImplementation("junit:junit:4.13.2")
-    testImplementation("org.jetbrains.kotlinx:kotlinx-coroutines-test:1.10.2")
-    testImplementation("org.mockito:mockito-core:5.18.0")
-    testImplementation("org.mockito.kotlin:mockito-kotlin:5.4.0")
+    testImplementation(libs.junit)
+    testImplementation(libs.kotlinx.coroutines.test)
+    testImplementation(libs.mockito.core)
+    testImplementation(libs.mockito.kotlin)
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)
     androidTestImplementation(libs.androidx.espresso.core)
     /** ---------- AndroidX Room testing ---------- */
-    testImplementation("androidx.room:room-testing:2.7.2")
+    testImplementation(libs.androidx.room.testing)
     /** ---------- Flow / Turbine ---------- */
-    testImplementation("app.cash.turbine:turbine:1.2.1")
+    testImplementation(libs.turbine)
 
+    /** Security */
+    implementation (libs.androidx.security.crypto)
+
+    /** Sqlcipher  */
+    implementation (libs.android.database.sqlcipher)
+    implementation(libs.androidx.sqlite)
 
     /**Dagger Hilt*/
     implementation (libs.hilt.android)

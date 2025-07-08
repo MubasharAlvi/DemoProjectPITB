@@ -1,6 +1,7 @@
 package com.example.newprojectforhamza
 
 import android.content.Context
+import com.example.newprojectforhamza.data.local.crypto.Encrypter
 import com.example.newprojectforhamza.data.local.dao.PopularMovieDao
 import com.example.newprojectforhamza.data.local.dao.TopRatedMovieDao
 import com.example.newprojectforhamza.data.remote.apiService.ApiService
@@ -20,6 +21,7 @@ import org.mockito.kotlin.any
 import org.mockito.kotlin.mock
 import org.mockito.kotlin.whenever
 import java.io.IOException
+import javax.inject.Inject
 
 @RunWith(MockitoJUnitRunner::class)
 class MovieRepositoryImpTest {
@@ -28,7 +30,10 @@ class MovieRepositoryImpTest {
     @Mock lateinit var api: ApiService
     @Mock lateinit var popularDao: PopularMovieDao
     @Mock lateinit var topDao: TopRatedMovieDao
-    @Mock lateinit var secretProvider: SecretProvider      // returns keys from NDK
+    @Mock lateinit var secretProvider: SecretProvider
+
+    @Inject
+    lateinit var encrypter: Encrypter
 
     /** The class under test */
     private lateinit var repository: MovieRepositoryImp
@@ -49,7 +54,8 @@ class MovieRepositoryImpTest {
             api            = api,
             daoPopular     = popularDao,
             daoTop         = topDao,
-            secretProvider = secretProvider
+            secretProvider = secretProvider,
+            encrypter = encrypter
         )
     }
 

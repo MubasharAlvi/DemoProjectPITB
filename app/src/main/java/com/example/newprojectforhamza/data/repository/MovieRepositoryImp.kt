@@ -2,6 +2,7 @@ package com.example.newprojectforhamza.data.repository
 
 import android.content.Context
 import com.example.newprojectforhamza.R
+import com.example.newprojectforhamza.data.local.crypto.Encrypter
 import com.example.newprojectforhamza.data.local.dao.PopularMovieDao
 import com.example.newprojectforhamza.data.local.dao.TopRatedMovieDao
 import com.example.newprojectforhamza.data.mapper.toEntity
@@ -25,7 +26,8 @@ class MovieRepositoryImp @Inject constructor(
     private val api: ApiService,
     private val daoPopular: PopularMovieDao,
     private val daoTop: TopRatedMovieDao,
-    private val secretProvider: SecretProvider
+    private val secretProvider: SecretProvider,
+    private val encrypter: Encrypter
 ) : MovieRepository {
 
     override suspend fun getPopularMovies(): Flow<ResourceApiState<List<PopularMoviesModel>>> =
@@ -36,6 +38,7 @@ class MovieRepositoryImp @Inject constructor(
             saveRemote = {
                 daoPopular.clear()
                 daoPopular.insertAll(it.map { dto -> dto.toEntity() })
+
             }
         )
 
@@ -63,7 +66,7 @@ class MovieRepositoryImp @Inject constructor(
         emit(ResourceApiState.Loading())
 
         val cache = queryLocal().first()
-        emit(ResourceApiState.Success(cache)) // Emit cache first
+        emit(ResourceApiState.Success(cache))
 
         if (isOnline()) {
             try {
