@@ -1,7 +1,9 @@
 package com.example.newprojectforhamza.data.mapper
 
+import com.example.newprojectforhamza.data.remote.models.AuthModelDTO
 import com.example.newprojectforhamza.data.remote.models.PopularResultDTO
 import com.example.newprojectforhamza.data.remote.models.TopRatedResultDTO
+import com.example.newprojectforhamza.domain.domainModels.AuthDomainModel
 import com.example.newprojectforhamza.domain.domainModels.PopularMoviesModel
 import com.example.newprojectforhamza.domain.domainModels.TopRatedMoviesModel
 
@@ -96,3 +98,10 @@ fun TopRatedResultDTO.toTopRatedDomain(): TopRatedMoviesModel =
         releaseDate=first_air_date,
         video=video
     )
+fun AuthModelDTO.toDomain(): AuthDomainModel {
+    return AuthDomainModel(
+        success = this.success,
+        message = this.message,
+        token = this.token
+    )
+}

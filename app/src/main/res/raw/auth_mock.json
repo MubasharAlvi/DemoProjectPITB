@@ -1,0 +1,34 @@
+{
+  "AuthMock": [
+    {
+      "message": "Successfully",
+      "token_auth": "token_john",
+      "data": {
+        "user": "john doe",
+        "password": "123456",
+        "email": "john@example.com",
+        "phone": "1234567890"
+      }
+    },
+    {
+      "message": "Successfully",
+      "token_auth": "token_jane",
+      "data": {
+        "user": "jane smith",
+        "password": "password",
+        "email": "jane@example.com",
+        "phone": "0987654321"
+      }
+    },
+    {
+      "message": "Successfully",
+      "token_auth": "token_mubashar",
+      "data": {
+        "user": "alvi",
+        "password": "Pass1234#",
+        "email": "mubashar@example.com",
+        "phone": "03001234567"
+      }
+    }
+  ]
+}

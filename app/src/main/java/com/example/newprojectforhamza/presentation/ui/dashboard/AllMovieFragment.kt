@@ -16,7 +16,7 @@ import com.example.newprojectforhamza.R
 import com.example.newprojectforhamza.databinding.FragmentAllMovieBinding
 import com.example.newprojectforhamza.domain.domainModels.Movie
 import com.example.newprojectforhamza.presentation.ui.adapter.RecycleViewAdapter
-import com.example.newprojectforhamza.presentation.ui.viewModels.MoviesViewModel
+import com.example.newprojectforhamza.presentation.ui.dashboard.viewModels.MoviesViewModel
 import com.example.newprojectforhamza.presentation.utils.ResourceApiState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.launch
@@ -52,7 +52,7 @@ class AllMovieFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
         }
 
        /**----------  Kick off the first fetch ---------- */
-      viewModel.fetchMovies()
+     /** viewModel.fetchMovies()*/
 
         /** ----------  Observe the StateFlow ---------- */
         viewLifecycleOwner.lifecycleScope.launch {
@@ -63,7 +63,6 @@ class AllMovieFragment : Fragment(), RecycleViewAdapter.InterfaceClickListener {
                         is ResourceApiState.Success -> {
                             binding.progressbarId.visibility = View.GONE
                             val data = state.data ?: return@collect
-                            Log.e("TAG","Data=== $data")
                             recycleViewFun(data as ArrayList<Movie>)
                         }
                         is ResourceApiState.Error -> {

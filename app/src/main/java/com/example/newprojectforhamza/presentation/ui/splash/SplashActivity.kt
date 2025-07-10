@@ -2,7 +2,6 @@ package com.example.newprojectforhamza.presentation.ui.splash
 
 import android.content.Intent
 import android.os.Bundle
-import android.os.Handler
 import android.view.View
 import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
@@ -10,7 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.lifecycleScope
 import com.example.newprojectforhamza.R
 import com.example.newprojectforhamza.databinding.ActivitySplashBinding
-import com.example.newprojectforhamza.presentation.ui.dashboard.MainActivity
+import com.example.newprojectforhamza.presentation.ui.authentication.AuthenticationActivity
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
@@ -27,7 +26,9 @@ class SplashActivity : AppCompatActivity() {
         setupAnimations()
         startProgressAnimation()
         navigateToMain()
-}
+        setContentView(binding.root)
+
+    }
 
     private fun setupAnimations() {
         /** Logo animation */
@@ -53,7 +54,7 @@ class SplashActivity : AppCompatActivity() {
     private fun navigateToMain() {
         lifecycleScope.launch {
             delay(splashDuration)
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, AuthenticationActivity::class.java))
             finish()
 
             /** Optional: Add transition animation */

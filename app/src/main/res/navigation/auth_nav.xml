@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
 <navigation xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/auth_nav.xml">
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/auth_nav.xml"
+    app:startDestination="@id/userLoginFragment">
 
+    <fragment
+        android:id="@+id/userLoginFragment"
+        android:name="com.example.newprojectforhamza.presentation.ui.authentication.UserLoginFragment"
+        android:label="fragment_login"
+        tools:layout="@layout/fragment_login" >
+        <action
+            android:id="@+id/action_userLoginFragment_to_userRegisterFragment"
+            app:destination="@id/userRegisterFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/userRegisterFragment"
+        android:name="com.example.newprojectforhamza.presentation.ui.authentication.UserRegisterFragment"
+        android:label="fragment_register"
+        tools:layout="@layout/fragment_register" />
 </navigation>

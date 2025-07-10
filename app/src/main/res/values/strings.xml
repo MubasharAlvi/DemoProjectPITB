@@ -12,4 +12,26 @@
     <string name="all_movie">All Movie</string>
     <string name="populars">Popular Movie</string>
     <string name="top_movies">Top Movies</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
+    <string name="underlined_register"><u>Register</u></string>
+    <string name="underlined_reset_password"><u>Reset Password</u></string>
+    <string name="email">Email</string>
+    <string name="phone">Phone</string>
+    <string name="confirm_password">Confirm Password</string>
+    <string name="register">Register</string>
+    <string name="back">Back</string>
+    <string name="user_name">User Name</string>
+    <string name="username_required">Username required</string>
+    <string name="password_must_be_at_least_8_characters">Password must be at least 8 characters</string>
+    <string name="invalid_username">Invalid username</string>
+    <string name="invalid_password">Invalid password</string>
+    <string name="invalid_username_and_password">Invalid username and password</string>
+    <string name="username_already_exists">Username already exists</string>
+    <string name="successfully">Successfully</string>
+    <string name="registration_successful">Registration successful</string>
+    <string name="invalid_credentials">Invalid credentials</string>
+
+
 </resources>

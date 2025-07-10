@@ -57,6 +57,7 @@ android {
             )
         }
         debug {
+          //  testCoverageEnabled = true
             isMinifyEnabled = false
         }
     }
@@ -73,50 +74,51 @@ android {
             path = file("src/main/cpp/CMakeLists.txt")
         }
     }
-
-/**
+    testOptions {
+        unitTests.isReturnDefaultValues = true
+        unitTests.isIncludeAndroidResources = true
+    }
+    flavorDimensions += "environment"
     productFlavors {
-        production {
-            resValue "string", "app_name", "Jet"
-            versionCode 1
-            versionName '1.0.0'
-            multiDexEnabled true
-            signingConfig signingConfigs.config
-                    externalNativeBuild {
-                        cmake {
-                            cppFlags ""
-                            arguments "-DANDROID_STL=c++_shared"
-                        }
-                    }
+        create("dev") {
+            dimension = "environment"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+            resValue("string", "app_name", "DemoApp Dev")
+         //   buildConfigField("String", "BASE_URL", )
         }
 
-
-
-        staging {
-            resValue "string", "app_name", "Stagging Jet"
-            applicationIdSuffix ".staging"
-            versionCode 1
-            versionName '1.0.0'
-            multiDexEnabled true
-            signingConfig signingConfigs.config
+        create("staging") {
+            dimension = "environment"
+            applicationIdSuffix = ".staging"
+            versionNameSuffix = "-staging"
+            resValue("string", "app_name", "DemoApp Staging")
+           // buildConfigField("String", "BASE_URL", )
         }
 
-        android.applicationVariants.all { variant ->
-
-            variant.outputs.all {output ->
-                def appName = "JET"
-                def variantName = variant.name.capitalize()
-                def versionName = variant.versionName
-                        def versionCode = variant.versionCode
-                        def date = new Date()
-                def formattedDate = date.format('dd-M-YY')
-                def newName = "${appName}-${variantName}-v${versionName}(${versionCode})-(${formattedDate}).apk"
-                output.outputFileName = newName
-
-            }
+        create("production") {
+            dimension = "environment"
+            applicationIdSuffix = ".production"
+            versionNameSuffix = "-production"
+            resValue("string", "app_name", "DemoApp")
+           // buildConfigField("String", "BASE_URL", )
         }
     }
-*/
+    sourceSets {
+        getByName("dev") {
+            java.srcDirs("src/dev/java")
+            res.srcDirs("src/dev/res")
+        }
+        getByName("staging") {
+            java.srcDirs("src/staging/java")
+            res.srcDirs("src/staging/res")
+        }
+        getByName("production") {
+            java.srcDirs("src/production/java")
+            res.srcDirs("src/production/res")
+        }
+    }
+
 
 }
 
@@ -129,7 +131,6 @@ dependencies {
     implementation(libs.androidx.constraintlayout)
 
     /** ---------- Unit testing ---------- */
-    testImplementation(libs.junit)
     testImplementation(libs.kotlinx.coroutines.test)
     testImplementation(libs.mockito.core)
     testImplementation(libs.mockito.kotlin)
@@ -140,6 +141,16 @@ dependencies {
     testImplementation(libs.androidx.room.testing)
     /** ---------- Flow / Turbine ---------- */
     testImplementation(libs.turbine)
+    testImplementation (libs.junit)
+    testImplementation (libs.mockk)
+    testImplementation (libs.kotlinx.coroutines.test)
+    testImplementation (libs.androidx.core.testing)
+    androidTestImplementation (libs.androidx.junit)
+    androidTestImplementation (libs.androidx.espresso.core)
+    androidTestImplementation (libs.androidx.fragment.testing)
+    androidTestImplementation (libs.mockk.android)
+    androidTestImplementation (libs.core.ktx)
+    androidTestImplementation (libs.androidx.navigation.testing.v291)
 
     /** Security */
     implementation (libs.androidx.security.crypto)

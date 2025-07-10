@@ -21,7 +21,7 @@ class MovieUseCase @Inject constructor(
     private val repository: MovieRepository
 ) {
 
-    /** 🆕 Emits one ResourceApiState<List<Movie>> that merges(TOP and Rated Movies). */
+    /**  Emits one ResourceApiState<List<Movie>> that merges(TOP and Rated Movies). */
     suspend fun getAllMovies(): Flow<ResourceApiState<List<Movie>>> =
         combine(
             repository.getPopularMovies(),    /** Flow<ResourceApiState<List<PopularMoviesModel>>>*/

@@ -32,7 +32,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.newprojectforhamza.data.remote.secretKey.SecretProvider
-import com.example.newprojectforhamza.presentation.ui.viewModels.PopularViewModel
+import com.example.newprojectforhamza.presentation.ui.dashboard.viewModels.PopularViewModel
 import com.example.newprojectforhamza.presentation.utils.ResourceApiState
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
