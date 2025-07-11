@@ -140,6 +140,13 @@ dependencies {
     /** ---------- AndroidX Room testing ---------- */
     testImplementation(libs.androidx.room.testing)
     /** ---------- Flow / Turbine ---------- */
+    androidTestImplementation("androidx.test.ext:junit:1.2.1")
+    androidTestImplementation("androidx.fragment:fragment-testing:1.8.8")
+    androidTestImplementation("androidx.test:rules:1.6.1")
+    androidTestImplementation("androidx.test:runner:1.6.2")
+    androidTestImplementation("com.google.dagger:hilt-android-testing:2.56.2")
+    kaptAndroidTest("com.google.dagger:hilt-compiler:2.56.2")
+    testImplementation(kotlin("test"))
     testImplementation(libs.turbine)
     testImplementation (libs.junit)
     testImplementation (libs.mockk)

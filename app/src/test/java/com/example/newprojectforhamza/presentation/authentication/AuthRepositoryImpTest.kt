@@ -1,22 +1,16 @@
-package com.example.newprojectforhamza
+package com.example.newprojectforhamza.presentation.authentication
 
+import android.content.Context
 import androidx.test.core.app.ApplicationProvider
 import com.example.newprojectforhamza.data.repository.AuthRepositoryImp
-import com.example.newprojectforhamza.presentation.utils.ResourceApiState
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.first
-import kotlinx.coroutines.test.runTest
-import org.json.JSONObject
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
 import org.junit.Before
-import org.junit.Test
 
 @OptIn(ExperimentalCoroutinesApi::class)
 class AuthRepositoryImpTest {
 
     private lateinit var repository: AuthRepositoryImp
-    private val context = ApplicationProvider.getApplicationContext<android.content.Context>()
+    private val context = ApplicationProvider.getApplicationContext<Context>()
 
     @Before
     fun setup() {

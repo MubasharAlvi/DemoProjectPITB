@@ -1,6 +1,4 @@
-package com.example.newprojectforhamza
-
-import android.util.Patterns
+package com.example.newprojectforhamza.presentation.authentication
 
 object ValidationUtils {
     private val USERNAME_RULE = Regex("^[A-Za-z]{3,16}$")

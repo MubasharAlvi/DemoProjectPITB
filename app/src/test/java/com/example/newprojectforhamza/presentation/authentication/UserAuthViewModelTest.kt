@@ -1,4 +1,4 @@
-package com.example.newprojectforhamza
+package com.example.newprojectforhamza.presentation.authentication
 
 import android.content.Context
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
@@ -13,10 +13,8 @@ import kotlinx.coroutines.test.StandardTestDispatcher
 import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runTest
 import kotlinx.coroutines.test.setMain
-import org.json.JSONObject
 import org.junit.After
-import org.junit.Assert.assertEquals
-import org.junit.Assert.assertTrue
+import org.junit.Assert
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -24,8 +22,6 @@ import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
-import org.mockito.kotlin.argumentCaptor
-import org.mockito.kotlin.verify
 import org.mockito.kotlin.whenever
 
 @OptIn(ExperimentalCoroutinesApi::class)
@@ -68,8 +64,8 @@ class UserAuthViewModelTest {
         // Assert
         testDispatcher.scheduler.advanceUntilIdle()
         val state = viewModel.moviesState.value
-        assertTrue(state is ResourceApiState.Success)
-        assertEquals(true, (state as ResourceApiState.Success).data?.first()?.success)
+        Assert.assertTrue(state is ResourceApiState.Success)
+        Assert.assertEquals(true, (state as ResourceApiState.Success).data?.first()?.success)
     }
 
     @Test
@@ -85,8 +81,8 @@ class UserAuthViewModelTest {
         // Assert
         testDispatcher.scheduler.advanceUntilIdle()
         val state = viewModel.moviesState.value
-        assertTrue(state is ResourceApiState.Success)
-        assertEquals(true, (state as ResourceApiState.Success).data?.first()?.success)
+        Assert.assertTrue(state is ResourceApiState.Success)
+        Assert.assertEquals(true, (state as ResourceApiState.Success).data?.first()?.success)
     }
 
 //    @Test
@@ -117,12 +113,12 @@ class UserAuthViewModelTest {
     fun `authLogin emits Error state on failure`() = runTest {
         // Arrange
         val error = Exception("Invalid credentials")
-        val errorState: ResourceApiState<List<AuthDomainModel>> = 
+        val errorState: ResourceApiState<List<AuthDomainModel>> =
             ResourceApiState.Error(
-                message = "Login failed", 
+                message = "Login failed",
                 throwable = error
             )
-        
+
         whenever(useCase.userLogin(any(), any()))
             .thenReturn(flowOf(errorState))
 
@@ -132,8 +128,8 @@ class UserAuthViewModelTest {
         // Assert
         testDispatcher.scheduler.advanceUntilIdle()
         val state = viewModel.moviesState.value
-        assertTrue(state is ResourceApiState.Error)
-        assertEquals("Login failed", (state as ResourceApiState.Error).message)
-        assertEquals(error, (state as ResourceApiState.Error).throwable)
+        Assert.assertTrue(state is ResourceApiState.Error)
+        Assert.assertEquals("Login failed", (state as ResourceApiState.Error).message)
+        Assert.assertEquals(error, (state as ResourceApiState.Error).throwable)
     }
 }
