@@ -49,7 +49,7 @@ class UserLoginFragment : Fragment() {
                             is ResourceApiState.Success -> {
                                 binding.progressbarId.visibility = View.GONE
                                 val data = state.data?.map { token = it.success } ?: return@collect
-                                if (validateAndLogin("validUser", "ValidPass1*") && token==true) {
+                                if (validateAndLogin() && token==true) {
                                     startActivity(Intent(requireContext(), MainActivity::class.java))
                                     requireActivity().finish()
                                 }
@@ -89,7 +89,7 @@ class UserLoginFragment : Fragment() {
 
 
     /**  Returns true → navigate; false → stay on this screen  */
-     fun validateAndLogin(string: String, string1: String): Boolean {
+     fun validateAndLogin(): Boolean {
         val username = binding.etUsername.text?.toString()?.trim().orEmpty()
         val password = binding.etPassword.text?.toString().orEmpty()
 
